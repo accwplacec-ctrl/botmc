@@ -1,6 +1,6 @@
 const mineflayer = require('mineflayer');
 const express = require('express');
-const { mineflayer: mineflayerViewer } = require('prismarine-viewer');
+const { webInventory } = require('mineflayer-web-inventory');
 
 const botArgs = {
   host: 'rune.pikamc.vn',
@@ -24,17 +24,12 @@ function initBot() {
   
   bot = mineflayer.createBot(botArgs);
 
-  // Khởi tạo Viewer khi bot spawn
   bot.once('spawn', () => {
-    console.log(`✅ Bot "${bot.username}" đã vào server!`);
+    console.log(`✅ Bot "${bot.username}" đã vào server thành công!`);
 
-    // Mở viewer trên port 3007
-    mineflayerViewer(bot, { 
-      port: 3007, 
-      firstPerson: true,     // true = góc nhìn thứ nhất (như bot nhìn)
-      // firstPerson: false  // false = góc nhìn chim (third person)
-    });
-    console.log('🌐 Viewer đã mở tại: http://localhost:3007 (hoặc Railway domain)');
+    // Mở Web Inventory Viewer
+    webInventory(bot, { port: 3007 });
+    console.log('🌐 Web Inventory Viewer: http://your-railway-domain:3007');
 
     setTimeout(() => {
       bot.chat(`/login ${BOT_PASSWORD}`);
@@ -66,8 +61,8 @@ function initBot() {
 
 initBot();
 
-// Web server (Railway + Viewer)
+// Main Web Server
 const app = express();
 const PORT = process.env.PORT || 8080;
-app.get('/', (req, res) => res.send('<h3>✅ Bot Mineflayer + Viewer đang chạy</h3>'));
+app.get('/', (req, res) => res.send('<h3>✅ Bot Mineflayer đang chạy | Inventory: /inventory</h3>'));
 app.listen(PORT, () => console.log(`[WEB SERVER] Đang chạy tại cổng: ${PORT}`));
