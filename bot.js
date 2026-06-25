@@ -1,17 +1,13 @@
 const mineflayer = require('mineflayer');
 const express = require('express');
 
-// ==========================================
-// CẤU HÌNH BOT
-// ==========================================
 const botArgs = {
-  host: 'rune.pikamc.vn',     // IP server của bạn
+  host: 'rune.pikamc.vn',
   port: 25078,
-  username: 'gulimen',        // Tên bot
-  version: '1.21.2',          // Phiên bản server yêu cầu
-  auth: 'offline',            // Thường là offline cho server private
-  // Các option giúp fix disconnect / packet error trên 1.21.2
-  physicsEnabled: false,      // Tắt physics lúc đầu để tránh lỗi packet
+  username: 'gulimen',
+  version: '1.21.2',
+  auth: 'offline',
+  physicsEnabled: false,
   checkTimeoutInterval: 30000,
   closeTimeout: 120000,
 };
@@ -48,7 +44,6 @@ function initBot() {
     console.error('[LỖI]:', err.message);
   });
 
-  // Xử lý resource pack (thường gây lỗi trên server 1.21+)
   bot.on('resourcePack', () => {
     console.log('Chấp nhận resource pack...');
     bot.acceptResourcePack();
@@ -62,8 +57,3 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => res.send('<h3>Bot Mineflayer 1.21.2 đang chạy ổn định!</h3>'));
 app.listen(PORT, () => console.log(`Web server chạy tại port ${PORT}`));
-
-
-bot.on('error', (err) => {
-  console.error('[LỖI CHI TIẾT]:', err); // In toàn bộ Object lỗi ra log
-});
