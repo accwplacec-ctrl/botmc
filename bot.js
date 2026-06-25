@@ -8,7 +8,7 @@ const botArgs = {
   host: 'rune.pikamc.vn', // <--- THAY BẰNG IP SERVER CỦA BẠN (Ví dụ: 'mczone.net')
   port: 25078,               // Cổng mặc định của Minecraft
   username: 'gulimen', // <--- TÊN BOT TRONG GAME (Nên đổi nếu tên này đã có người đăng ký)
-  version: '26.1.2'          // <--- PHIÊN BẢN MINECRAFT CỦA SERVER
+  version: '1.21.2'          // <--- PHIÊN BẢN MINECRAFT CỦA SERVER
 };
 
 // Đặt mật khẩu cố định cho bot để tự động /register và /login
