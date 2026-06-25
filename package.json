@@ -1,0 +1,13 @@
+{
+  "name": "minecraft-railway-bot",
+  "version": "1.0.0",
+  "description": "Bot Mineflayer xem log và tự động login 24/7 trên Railway",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mineflayer": "^4.22.0"
+  }
+}
