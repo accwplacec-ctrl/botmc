@@ -62,3 +62,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => res.send('<h3>Bot Mineflayer 1.21.2 đang chạy ổn định!</h3>'));
 app.listen(PORT, () => console.log(`Web server chạy tại port ${PORT}`));
+
+
+bot.on('error', (err) => {
+  console.error('[LỖI CHI TIẾT]:', err); // In toàn bộ Object lỗi ra log
+});
