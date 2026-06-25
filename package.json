@@ -1,7 +1,7 @@
 {
   "name": "minecraft-railway-bot",
   "version": "1.0.0",
-  "description": "Bot Mineflayer có viewer",
+  "description": "Bot Mineflayer",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
@@ -9,6 +9,6 @@
   "dependencies": {
     "express": "^4.19.2",
     "mineflayer": "^4.37.1",
-    "prismarine-viewer": "^1.7.0"
+    "mineflayer-web-inventory": "^1.0.3"
   }
 }
