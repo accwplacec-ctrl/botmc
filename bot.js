@@ -27,13 +27,15 @@ function initBot() {
   bot.once('spawn', () => {
     console.log(`✅ Bot "${bot.username}" đã vào server thành công!`);
 
-    // Mở Web Inventory Viewer
+    // Web Inventory Viewer
     webInventory(bot, { port: 3007 });
-    console.log('🌐 Web Inventory Viewer: http://your-railway-domain:3007');
+    console.log('🌐 Inventory Viewer: http://your-domain:3007');
 
     setTimeout(() => {
+      console.log('[XÁC THỰC] Gửi Register + Login...');
+      bot.chat(`/register ${BOT_PASSWORD} ${BOT_PASSWORD}`);
       bot.chat(`/login ${BOT_PASSWORD}`);
-    }, 4000);
+    }, 5000); // Delay 5 giây sau khi spawn
   });
 
   bot.on('chat', (username, message) => {
@@ -64,5 +66,5 @@ initBot();
 // Main Web Server
 const app = express();
 const PORT = process.env.PORT || 8080;
-app.get('/', (req, res) => res.send('<h3>✅ Bot Mineflayer đang chạy | Inventory: /inventory</h3>'));
+app.get('/', (req, res) => res.send('<h3>✅ Bot Mineflayer + Viewer đang chạy</h3>'));
 app.listen(PORT, () => console.log(`[WEB SERVER] Đang chạy tại cổng: ${PORT}`));
